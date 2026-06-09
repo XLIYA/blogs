@@ -1,6 +1,7 @@
 import { renderBlogs } from "./components/blogs-card.js";
 import { initAddNewBlog } from "./components/add-new-blog.js";
 import { initEditBlog } from "./components/edit-blog.js";
+import { initBlogDetails, initBackButton } from "./components/blog-details.js";
 
 const addNewBlogButton = document.getElementById("add-new-blog");
 
@@ -13,3 +14,5 @@ if (addNewBlogButton) {
 renderBlogs();
 initAddNewBlog();
 initEditBlog();
+initBlogDetails();
+initBackButton();
