@@ -3,6 +3,7 @@ import { initAddNewBlog } from "./components/add-new-blog.js";
 import { initEditBlog } from "./components/edit-blog.js";
 import { initBlogDetails, initBackButton } from "./components/blog-details.js";
 import { initSearchBlog } from "./components/search-blog.js";
+import { initDeleteBlog } from "./components/delete-blog.js";
 
 const addNewBlogButton = document.getElementById("add-new-blog");
 
@@ -18,3 +19,4 @@ initEditBlog();
 initBlogDetails();
 initBackButton();
 initSearchBlog();
+initDeleteBlog();

@@ -7,6 +7,7 @@ const blogTitle = document.getElementById("blog-title");
 const blogImageUrl = document.getElementById("blog-image-url");
 const blogDescription = document.getElementById("blog-description");
 
+// create blog api
 export const createBlog = async (blogData) => {
     const response = await fetch(`${BASE_API}/blogs`, {
         method: "POST",
