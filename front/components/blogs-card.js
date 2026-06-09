@@ -2,61 +2,98 @@ const BASE_API = "http://localhost:3000";
 
 const blogsCard = document.getElementById("blogs-card");
 
-export const renderBlogs = () => {
-    fetch(`${BASE_API}/blogs`)
-        .then(response => response.json())
-        .then(result => {
 
-            let blogsHTML = "";
+// to get te right fomat eof date in the design
+const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("en-CA");
+};
 
-            result.forEach(blog => {
-                blogsHTML += `
-                    <div class="
-                        bg-slate-700/80 border border-slate-600 rounded-3xl p-6 min-h-[260px] flex flex-col justify-between shadow-lg">
+export const getBlogs = async () => {
+    const response = await fetch(`${BASE_API}/blogs`);
 
-                        <div class="space-y-4">
+    if (!response.ok) {
+        throw new Error("Failed to get blogs");
+    }
 
-                            <h2 class="text-3xl font-bold text-white">
-                                ${blog.title}
-                            </h2>
+    return response.json();
+};
 
-                            <p class="text-slate-300 text-lg line-clamp-2">
-                                ${blog.description}
-                            </p>
+export const getBlogById = async (id) => {
+    const response = await fetch(`${BASE_API}/blogs/${id}`);
 
-                        </div>
+    if (!response.ok) {
+        throw new Error("Blog not found");
+    }
 
-                        <div class="space-y-4 mt-8">
+    return response.json();
+};
 
-                            <p class="text-slate-400 font-semibold">
-                                ${blog.published_at}
-                            </p>
+export const renderBlogs = async () => {
+    if (!blogsCard) return;
 
-                            <div class="flex gap-3">
+    try {
+        const blogs = await getBlogs();
 
-                                <button
-                                    class="px-5 py-2 rounded-xl bg-slate-500  text-white font-semibold hover:bg-slate-400 transition"
-                                > 
-                                    Read More
-                                </button>
+        let blogsHTML = "";
 
-                                <button
-                                    class="px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-400 to-pink-400 text-white font-semibold hover:scale-105 transition"
-                                >
-                                    Edit
-                                </button>
+        blogs.forEach((blog) => {
+            blogsHTML += `
+                <div class="
+                    bg-slate-700/80 
+                    border border-slate-600 
+                    rounded-3xl 
+                    p-6 
+                    min-h-[260px] 
+                    flex 
+                    flex-col 
+                    justify-between 
+                    shadow-lg
+                ">
 
-                            </div>
+                    <div class="space-y-4">
+
+                        <h2 class="text-3xl font-bold text-white">
+                            ${blog.title}
+                        </h2>
+
+                        <p class="text-slate-300 text-lg line-clamp-2">
+                            ${blog.description}
+                        </p>
+
+                    </div>
+
+                    <div class="space-y-4 mt-8">
+
+                        <p class="text-slate-400 font-semibold">
+                            ${formatDate(blog.published_at)}
+                        </p>
+
+                        <div class="flex gap-3">
+
+                            <button
+                                class="px-5 py-2 rounded-xl bg-slate-500 text-white font-semibold hover:bg-slate-400 transition"
+                            >
+                                Read More
+                            </button>
+
+                            <a
+                                href="edit-blog.html?id=${blog.id}"
+                                class="px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-400 to-pink-400 text-white font-semibold hover:scale-105 transition"
+                            >
+                                Edit
+                            </a>
 
                         </div>
 
                     </div>
-                `;
-            });
 
-            blogsCard.innerHTML = blogsHTML;
-        })
-        .catch(err => console.error(err));
+                </div>
+            `;
+        });
+
+        blogsCard.innerHTML = blogsHTML;
+
+    } catch (error) {
+        console.error(error);
+    }
 };
-
-renderBlogs()

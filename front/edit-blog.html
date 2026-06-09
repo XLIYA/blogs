@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <script src="tailwind.js"></script>
+</head>
+
+<body>
+    <main class="min-h-screen bg-slate-900 flex items-center justify-center p-6">
+
+        <form id="edit-blog-form"
+            class="w-full max-w-2xl rounded-[36px] border border-slate-600 bg-slate-800/80 p-8 shadow-2xl">
+
+            <h1 class="text-5xl font-extrabold text-white mb-10">
+                Edit Blog
+            </h1>
+
+            <div class="space-y-6">
+
+                <div>
+                    <label class="block text-white font-bold mb-3">
+                        Blog Title
+                    </label>
+
+                    <input id="blog-title" type="text"
+                        class="w-full h-14 rounded-2xl bg-slate-700 border border-slate-600 px-5 text-white placeholder:text-slate-400 outline-none focus:border-blue-400">
+                </div>
+
+                <div>
+                    <label class="block text-white font-bold mb-3">
+                        Image URL
+                    </label>
+
+                    <input id="blog-image-url" type="text"
+                        class="w-full h-14 rounded-2xl bg-slate-700 border border-slate-600 px-5 text-white placeholder:text-slate-400 outline-none focus:border-blue-400">
+                </div>
+
+                <div>
+                    <label class="block text-white font-bold mb-3">
+                        Description
+                    </label>
+
+                    <textarea id="blog-description"
+                        class="w-full h-56 resize-none rounded-2xl bg-slate-700 border border-slate-600 p-5 text-white placeholder:text-slate-400 outline-none focus:border-blue-400"></textarea>
+                </div>
+
+                <button type="submit"
+                    class="w-full h-14 rounded-2xl bg-gradient-to-r from-yellow-400 to-pink-400 text-white font-bold hover:scale-[1.02] duration-300">
+                    Update Blog
+                </button>
+
+            </div>
+
+        </form>
+
+        <script type="module" src="index.js"></script>
+    </main>
+</body>
+
+</html>
