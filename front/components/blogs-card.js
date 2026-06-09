@@ -70,11 +70,12 @@ export const renderBlogs = async () => {
 
                         <div class="flex gap-3">
 
-                            <button
+                            <a
+                                href="blog-details.html?id=${blog.id}"
                                 class="px-5 py-2 rounded-xl bg-slate-500 text-white font-semibold hover:bg-slate-400 transition"
                             >
                                 Read More
-                            </button>
+                            </a>
 
                             <a
                                 href="edit-blog.html?id=${blog.id}"
