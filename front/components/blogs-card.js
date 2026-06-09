@@ -2,12 +2,6 @@ const BASE_API = "http://localhost:3000";
 
 const blogsCard = document.getElementById("blogs-card");
 
-
-// to get te right fomat eof date in the design
-const formatDate = (date) => {
-    return new Date(date).toLocaleDateString("en-CA");
-};
-
 export const getBlogs = async () => {
     const response = await fetch(`${BASE_API}/blogs`);
 
@@ -28,15 +22,46 @@ export const getBlogById = async (id) => {
     return response.json();
 };
 
-export const renderBlogs = async () => {
+const filterBlogs = (blogs, query) => {
+    const searchValue = query.trim().toLowerCase();
+
+    if (!searchValue) {
+        return blogs;
+    }
+
+    return blogs.filter((blog) => {
+        const title = blog.title.toLowerCase();
+        const description = blog.description.toLowerCase();
+        const publishedAt = blog.published_at.toLowerCase();
+
+        return (
+            title.includes(searchValue) ||
+            description.includes(searchValue) ||
+            publishedAt.includes(searchValue)
+        );
+    });
+};
+
+export const renderBlogs = async (query = "") => {
     if (!blogsCard) return;
 
     try {
         const blogs = await getBlogs();
 
+        const filteredBlogs = filterBlogs(blogs, query);
+
+        if (filteredBlogs.length === 0) {
+            blogsCard.innerHTML = `
+                <p class="text-slate-300 text-2xl font-bold col-span-full">
+                    No blogs found.
+                </p>
+            `;
+            return;
+        }
+
         let blogsHTML = "";
 
-        blogs.forEach((blog) => {
+        filteredBlogs.forEach((blog) => {
             blogsHTML += `
                 <div class="
                     bg-slate-700/80 
@@ -65,7 +90,7 @@ export const renderBlogs = async () => {
                     <div class="space-y-4 mt-8">
 
                         <p class="text-slate-400 font-semibold">
-                            ${formatDate(blog.published_at)}
+                            ${blog.published_at}
                         </p>
 
                         <div class="flex gap-3">
