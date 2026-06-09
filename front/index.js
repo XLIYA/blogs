@@ -1,0 +1,1 @@
+import {renderBlogs} from "./components/blogs-card.js"

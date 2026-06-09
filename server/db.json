@@ -1,0 +1,35 @@
+{
+    "blogs": [
+        {
+            "title": "How to Start a Successful Blog in 2018",
+            "description": "A step-by-step guide to launching a blog, choosing the right platform, and growing your audience from scratch.",
+            "published_at": "2018-11-15",
+            "image_url": "https://www.elegantthemes.com/blog/wp-content/uploads/2018/11/shutterstock_1049564585-960.jpg"
+        },
+        {
+            "title": "Blogging for Small Businesses: A Complete Guide",
+            "description": "Learn why blogging is essential for SMBs and how to create content that drives traffic and sales.",
+            "published_at": "2019-06-20",
+            "image_url": "https://techmeetups.com/wp-content/uploads/2019/06/blogging-SMB.png"
+        },
+        {
+            "title": "7 Ways a Blog Can Help Your Business Right Now",
+            "description": "Discover seven immediate benefits of business blogging, from SEO to customer engagement.",
+            "published_at": "2020-08-10",
+            "image_url": "https://cdn.searchenginejournal.com/wp-content/uploads/2020/08/7-ways-a-blog-can-help-your-business-right-now-5f3c06b9eb24e.png"
+        },
+        {
+            "title": "The Role of Blogging in Digital Marketing",
+            "description": "Understand how blogging supports digital marketing strategies, boosts brand awareness, and generates leads.",
+            "published_at": "2023-09-05",
+            "image_url": "https://www.chitkara.edu.in/blogs/wp-content/uploads/2023/09/Blogging-in-Digital-Marketing.jpg"
+        },
+        {
+            "title": "Essential Blogging Tips for Aspiring Writers",
+            "description": "Practical tips to improve your blog writing, build a loyal readership, and turn blogging into a career.",
+            "published_at": "2017-04-12",
+            "image_url": "https://nicholasrossis.me/wp-content/uploads/2017/04/BLOG01.jpg"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
+}
